@@ -1,7 +1,8 @@
 <script>
   import LegendBlock from './components/LegendBlock.svelte'
   import Radar from "./components/Radar.svelte";
-  import { stored_config, stored_data } from "./stores";
+  import {stored_config, stored_data} from "./stores";
+  import Header from "./page/Header.svelte";
 
   export let config;
   export let dataset;
@@ -14,7 +15,9 @@
 </script>
 
 <main class="main">
-  <h1 class="headline">{config.title}</h1>
+  <div class="header">
+    <Header title={config.title} />
+  </div>
 
   {#each config.quadrants as quadrant, index}
     <div class="legend">
@@ -32,6 +35,7 @@
     --primary-color: #E60023;
     --ci-gray: #695F5F;
   }
+
   .main {
     display: grid;
     grid-template-areas:
@@ -42,22 +46,22 @@
     margin: 0 auto;
   }
 
-  .headline {
-    color: var(--primary-color);
+  .header {
     grid-area: header;
-    text-align: center;
-    text-transform: uppercase;
   }
 
   .legend:nth-of-type(1) {
     grid-area: legend0;
   }
+
   .legend:nth-of-type(2) {
     grid-area: legend1;
   }
+
   .legend:nth-of-type(3) {
     grid-area: legend2;
   }
+
   .legend:nth-of-type(4) {
     grid-area: legend3;
   }
