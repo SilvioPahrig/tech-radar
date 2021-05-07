@@ -9,23 +9,24 @@
   let rings;
   let ringData;
 
-  const unsubscribeConfig = stored_config.subscribe(value => {
+  const unsubscribeConfig = stored_config.subscribe((value) => {
     ringData = value.rings;
   });
 
-  const unsubscribeData = stored_data.subscribe(value => {
-    rings = value.filter(item => item.quadrant === index).reduce((result, item) => {
-      if (!result[item.ring])
-        result[item.ring] = [];
-      result[item.ring].push(item);
-      return result;
-    }, []);
+  const unsubscribeData = stored_data.subscribe((value) => {
+    rings = value
+      .filter((item) => item.quadrant === index)
+      .reduce((result, item) => {
+        if (!result[item.ring]) result[item.ring] = [];
+        result[item.ring].push(item);
+        return result;
+      }, []);
     console.log(ringData);
     console.log(rings);
   });
 </script>
 
-<div class="legend__block" data-ring="{index}">
+<div class="legend__block" data-ring={index}>
   <h3 class="legend__blockHeadline">{label}</h3>
   {#each rings as ring, r}
     <ul>

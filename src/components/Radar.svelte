@@ -3,14 +3,12 @@
 
   export let dataset;
 
-  const unsubscribe = stored_data.subscribe(value => {
+  const unsubscribe = stored_data.subscribe((value) => {
     dataset = value;
   });
 </script>
 
-<div class="radar">
-  TODO
-</div>
+<div class="radar">TODO</div>
 
 <style>
   .radar {
