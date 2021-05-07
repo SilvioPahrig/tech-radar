@@ -1,7 +1,5 @@
-.DS_Store
-.hot/
-.idea/
-dist/
-docs/
-node_modules/
+/node_modules/
 /public/build/
+/.idea/
+
+.DS_Store
