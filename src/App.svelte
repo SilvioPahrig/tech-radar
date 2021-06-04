@@ -1,4 +1,4 @@
-<script lang="ts">
+<script>
   import LegendBlock from './components/LegendBlock.svelte'
   import Radar from "./components/Radar.svelte";
   import {stored_config, stored_data} from "./stores";
