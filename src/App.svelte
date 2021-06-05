@@ -1,8 +1,8 @@
 <script>
-  import LegendBlock from './components/LegendBlock.svelte'
-  import Radar from "./components/Radar.svelte";
+  import LegendBlock from './components/LegendBlock.svelte';
   import {stored_config, stored_data} from "./stores";
   import Header from "./page/Header.svelte";
+  import Quadrant from "./components/Quadrant.svelte";
 
   export let config;
   export let dataset;
@@ -25,48 +25,74 @@
     </div>
   {/each}
 
-  <div class="radar">
-    <Radar />
-  </div>
+  {#each config.quadrants as quadrant, index}
+    <div class="quadrant">
+      <Quadrant index={index} />
+    </div>
+  {/each}
 </main>
 
-<style>
+<style lang="scss">
   :global(:root) {
     --primary-color: #E60023;
     --ci-gray: #695F5F;
+  }
+
+  :global(body) {
+    background-color: #ddd;
+    padding: 0;
   }
 
   .main {
     display: grid;
     grid-template-areas:
             "header header header header"
-            "legend0 radar radar legend1"
-            "legend2 radar radar legend3";
+            "legend0 radar0 radar1 legend1"
+            "legend2 radar2 radar3 legend3";
 
+    box-shadow: inset 0 0 200px rgba(0, 0, 0, 0.3);
     margin: 0 auto;
+    padding: 8px;
   }
 
   .header {
     grid-area: header;
   }
 
-  .legend:nth-of-type(1) {
-    grid-area: legend0;
+  .legend {
+
+    &:nth-of-type(1) {
+      grid-area: legend0;
+    }
+
+    &:nth-of-type(2) {
+      grid-area: legend1;
+    }
+
+    &:nth-of-type(3) {
+      grid-area: legend2;
+    }
+
+    &:nth-of-type(4) {
+      grid-area: legend3;
+    }
   }
 
-  .legend:nth-of-type(2) {
-    grid-area: legend1;
-  }
+  .quadrant {
+    &:nth-of-type(1) {
+      grid-area: radar0;
+    }
 
-  .legend:nth-of-type(3) {
-    grid-area: legend2;
-  }
+    &:nth-of-type(2) {
+      grid-area: radar1;
+    }
 
-  .legend:nth-of-type(4) {
-    grid-area: legend3;
-  }
+    &:nth-of-type(3) {
+      grid-area: radar2;
+    }
 
-  .radar {
-    grid-area: radar;
+    &:nth-of-type(4) {
+      grid-area: radar3;
+    }
   }
 </style>
