@@ -364,7 +364,7 @@
     "php": {
         "adopt": [
             {
-                "label": "PHP 7.4 / 8.x",
+                "label": "PHP >= 8.1",
                 "moved": 0
             },
             {
@@ -414,13 +414,13 @@
             {
                 "label": "Swagger",
                 "moved": 0
-            }
-        ],
-        "trial": [
+            },
             {
                 "label": "Satis",
                 "moved": 0
-            },
+            }
+        ],
+        "trial": [
             {
                 "label": "Casandra",
                 "moved": 0
